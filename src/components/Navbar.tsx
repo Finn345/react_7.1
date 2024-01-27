@@ -1,9 +1,19 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function Navbar() {
   const [isVisible, setIsVisible] = useState(false)
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  const signOutOnClick = () => {
+    logout();
+  }
+
+  const signInOnClick = () => {
+    loginWithRedirect();
+  }
 
   const dropDownBar = () =>{
     setIsVisible(!isVisible)
@@ -51,7 +61,26 @@ function Navbar() {
               </Link>
             </div>
           </Button>
-          </div>
+          {
+            !isAuthenticated?
+            <Button className="p-2 m-5 bg-blue-700 justify-center shadow-xl rounded">
+              <div>
+                <Link to="/" onClick={signInOnClick} className='flex place-content-center mt-2 lg:inline-block lg:mt-1
+              text-gray-300 hover:text-red-600'>
+                  Sign In
+                </Link>
+              </div>
+            </Button>
+            :
+            <Button className="p-2 m-5 bg-blue-700 justify-center shadow-xl rounded">
+              <div>
+                <Link to="/" onClick={signOutOnClick} className='flex place-content-center mt-2 lg:inline-block lg:mt-1
+              text-gray-300 hover:text-red-600'>
+                Sign Out
+                </Link>
+              </div>
+            </Button>
+          }</div>
       </div> 
       ):(
         <></>
@@ -59,4 +88,4 @@ function Navbar() {
     </nav>
   )
 }
-export default Navbar
+export default Navbar;

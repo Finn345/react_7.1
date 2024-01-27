@@ -1,7 +1,7 @@
 interface ButtonProps{
     children: React.ReactNode;
     className?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>)=> void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Button ( props: ButtonProps){

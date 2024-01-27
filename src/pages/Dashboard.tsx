@@ -1,9 +1,9 @@
-import React from 'react'
+import DataTable from '../components/DataTable'
 
 const Dashboard = () => {
   return (
-    <div>
-      Dashboard
+    <div className='Justify-center flex flex-wrap shadow-lg border rounded flex-row'>
+      <DataTable />
     </div>
   )
 }

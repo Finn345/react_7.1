@@ -10,6 +10,7 @@ function Home () {
                 <h4 className="p-5 bg-white bg-opacity-40 rounded text-black">
                     Welcome to Cars!
                 </h4>
+                
             </div>
         </div>
   )
